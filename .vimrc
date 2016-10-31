@@ -12,18 +12,24 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'nono/vim-handlebars'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
+Plugin 'mxw/vim-jsx'
+" Plugin 'wookiehangover/jshint.vim'
+" Plugin 'Shutnik/jshint2.vim'
+
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'klen/python-mode'
 "Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/nerdcommenter'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'corntrace/bufexplorer'
 Plugin 'moll/vim-bbye'
-Plugin 'wookiehangover/jshint.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
@@ -33,7 +39,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'derekwyatt/vim-scala'
 
 " Plugin 'paredit.vim'
-let g:JSHintHighlightErrorLine = 0
+" let g:JSHintHighlightErrorLine = 0
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:syntastic_javascript_checkers = ['eslint']
 "Plugin 'AutoTag'
 
 "Plugin 'szarski/buftabs'
@@ -133,6 +141,7 @@ let mapleader = "\<Space>"
 
 nmap <leader>w <c-w>w
 nmap <leader>x :Gblame<CR>
+nmap <leader>a :Gitv<CR>
 nmap <leader>g :Ag<SPACE>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -147,6 +156,9 @@ nmap <leader>f :CtrlP<CR>
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
 nmap <leader>d :Bdelete<CR>
+
+nmap <leader>, :tabprevious<CR>
+nmap <leader>. :tabNext<CR>
 
 " nmap <leader>g <C-]>
 " nmap <leader>h <C-t>
@@ -186,7 +198,8 @@ nmap <leader>t :Require<CR>
 
 set completeopt-=preview
 
-" Plugin 'scrooloose/syntastic'
+vnoremap <leader>c "+y
+
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'FSwitch'
 " nmap <leader>y :FSHere<CR>
