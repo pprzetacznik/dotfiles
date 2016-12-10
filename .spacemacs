@@ -277,6 +277,14 @@ layers configuration. You are free to put any user code."
     "d"     'slime-edit-definition
     "ee"    'next-buffer
     )
+
+  (defun save-buffer-if-visiting-file (&optional args)
+    "Save the current buffer only if it is visiting a file"
+    (interactive)
+    (if (and (buffer-file-name) (buffer-modified-p))
+        (save-buffer args)))
+
+  (add-hook 'auto-save-hook 'save-buffer-if-visiting-file)
   ;; (with-eval-after-load 'evil-org
     ;; (define-key evil-org-mode-map (kbd "<normal-state> M-m W") #'other-window))
   ;; (evil-define-key 'normal evil-org-mode-map "M-m W" #'other-window)

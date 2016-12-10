@@ -195,6 +195,7 @@ nmap <leader>o <c-o>
 nmap <leader>r :Eval<CR>
 vmap <leader>r :Eval<CR>
 nmap <leader>t :Require<CR>
+nmap <leader>k i<CR><Esc>
 
 set completeopt-=preview
 
