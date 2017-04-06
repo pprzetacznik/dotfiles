@@ -196,6 +196,8 @@ nmap <leader>r :Eval<CR>
 vmap <leader>r :Eval<CR>
 nmap <leader>t :Require<CR>
 nmap <leader>k i<CR><Esc>
+nmap <leader>j :%!python -m json.tool<CR>
+nmap <leader>m :copen<CR>
 
 set completeopt-=preview
 
