@@ -203,12 +203,13 @@ set completeopt-=preview
 
 vnoremap <leader>c "+y
 
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " Plugin 'FSwitch'
 " nmap <leader>y :FSHere<CR>
-" nmap <leader>h :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_key_detailed_diagnostics = '<c-s>d'
+nmap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <leader>D <c-o>
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_detailed_diagnostics = '<c-s>d'
 Plugin 'rking/ag.vim'
 
 call vundle#end()
