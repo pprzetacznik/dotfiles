@@ -197,6 +197,7 @@ vmap <leader>r :Eval<CR>
 nmap <leader>t :Require<CR>
 nmap <leader>k i<CR><Esc>
 nmap <leader>j :%!python -m json.tool<CR>
+nmap <leader>l :%!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parseString(''.join(sys.stdin.readlines())).toprettyxml(indent='  '))"<CR>
 nmap <leader>m :copen<CR>
 
 set completeopt-=preview
