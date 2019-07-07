@@ -1,0 +1,11 @@
+term xterm-256color
+mousetrack on
+layout autosave on
+layout save default
+startup_message off
+hardstatus ignore
+hardstatus off
+
+# unbind locking screen
+bind x
+bind ^x
