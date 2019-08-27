@@ -7,8 +7,6 @@ parse_git_branch() {
 }
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
-export PAGER=vim
-export EDITOR=vim
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alFh --color=auto'
@@ -17,4 +15,12 @@ alias mc='. /usr/lib/mc/mc-wrapper.sh'
 alias dusort='du -a . | sort -n -r | head -n 10'
 alias emacsx='emacs'
 alias emacs='emacs -nw'
+alias vim="gvim -v"
+export PAGER=vim
+export EDITOR=vim
+export WORKON_HOME=~/Envs
 source /usr/local/bin/virtualenvwrapper.sh
+
+# turn off ctrl-s in terminal
+stty ixany
+stty ixoff -ixon
