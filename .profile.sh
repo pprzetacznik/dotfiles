@@ -16,7 +16,10 @@ alias dusort='du -a . | sort -n -r | head -n 10'
 alias emacsx='emacs'
 alias emacs='emacs -nw'
 alias vim="gvim -v"
-export PAGER=vim
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+    vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 export EDITOR=vim
 export WORKON_HOME=~/Envs
 source /usr/local/bin/virtualenvwrapper.sh
