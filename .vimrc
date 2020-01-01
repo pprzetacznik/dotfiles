@@ -23,6 +23,7 @@ Plugin 'klen/python-mode'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'gregsexton/gitv'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/nerdcommenter'
@@ -93,10 +94,6 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-
-filetype off
-filetype plugin on
-filetype indent on
 
 " Display tabs and tr[MaFailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -214,3 +211,7 @@ let g:ycm_key_detailed_diagnostics = '<c-s>d'
 Plugin 'rking/ag.vim'
 
 call vundle#end()
+
+filetype off
+filetype plugin on
+filetype indent on
