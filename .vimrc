@@ -19,6 +19,13 @@ Plugin 'mxw/vim-jsx'
 
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'klen/python-mode'
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
+
+Plugin 'psf/black'
+let g:black_linelength = 79
+let g:black_skip_string_normalization = 0
+
 "Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
