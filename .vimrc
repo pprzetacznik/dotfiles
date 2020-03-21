@@ -208,7 +208,7 @@ set completeopt-=preview
 
 vnoremap <leader>c "+y
 
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 " Plugin 'FSwitch'
 " nmap <leader>y :FSHere<CR>
 nmap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
