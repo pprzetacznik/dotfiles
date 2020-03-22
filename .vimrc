@@ -147,6 +147,7 @@ nmap <leader>w <c-w>w
 nmap <leader>x :Gblame<CR>
 nmap <leader>a :Gitv<CR>
 nmap <leader>gs :Gstatus<CR>
+nmap <leader>gp :Gpush<CR>
 nmap <leader>g :Ag<SPACE>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
