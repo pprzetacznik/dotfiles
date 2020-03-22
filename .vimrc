@@ -146,6 +146,7 @@ let mapleader = "\<Space>"
 nmap <leader>w <c-w>w
 nmap <leader>x :Gblame<CR>
 nmap <leader>a :Gitv<CR>
+nmap <leader>gs :Gstatus<CR>
 nmap <leader>g :Ag<SPACE>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -199,6 +200,8 @@ nmap <leader>o <c-o>
 nmap <leader>r :Eval<CR>
 vmap <leader>r :Eval<CR>
 nmap <leader>t :Require<CR>
+nmap <leader>T :vertical term<CR>
+let &shell="/bin/bash --login"
 nmap <leader>k i<CR><Esc>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>l :%!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parseString(''.join(sys.stdin.readlines())).toprettyxml(indent='  '))"<CR>
