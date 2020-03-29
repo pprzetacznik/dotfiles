@@ -63,7 +63,7 @@ case $JOB in
     install_links
     ;;
   rhel)
-    ln -sf $(pwd)/.bashrc ~/.bashrc
+    ln -sf $(pwd)/.bash_profile ~/.bash_profile
     install_vimrc
     install_links
     install_tmux_rhel
