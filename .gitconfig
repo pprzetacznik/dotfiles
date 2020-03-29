@@ -1,9 +1,14 @@
 [user]
-        name = Piotr Przetacznik
-        email = piotr.przetacznik@gmail.com
+  name = Piotr Przetacznik
+  email = piotr.przetacznik+git@gmail.com
 [core]
-        editor = vim
+  editor = "vim -"
+  pager = "vim -c 'silent %sm/\\e.\\{-}m//g' \
+    -c 'set ft=git' \
+    -c 'setlocal buftype=nofile' \
+    -c 'normal gg' -R -"
 [diff]
-        tool = vimdiff
+  # tool = "gvimdiff -R -c 'set filetype=git nowrap' -"
 [difftool]
-        prompt = true
+  # prompt = true
+  prompt = false

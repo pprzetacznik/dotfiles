@@ -3,7 +3,13 @@
 set -xe
 
 
-function install_vimrc () {
+function_install_python_rhel () {
+  sudo yum install python-devel
+  sudo pip install --upgrade pip
+  pip install virtualenv virtualenvwrapper
+}
+
+function install_vim () {
   ln -sf $(pwd)/.vimrc ~/.vimrc
   ln -sf $(pwd)/.inputrc ~/.inputrc
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -59,12 +65,13 @@ JOB=${1:-rhel}
 case $JOB in
   ubuntu)
     ln -sf $(pwd)/.profile.sh ~/.profile.sh
-    install_vimrc
+    install_vim
     install_links
     ;;
   rhel)
     ln -sf $(pwd)/.bash_profile ~/.bash_profile
-    install_vimrc
+    install_python_rhel
+    install_vim
     install_links
     install_tmux_rhel
     install_ycm_rhel
@@ -73,7 +80,7 @@ case $JOB in
     install_swapfile
     ;;
   vim)
-    install_vimrc
+    install_vim
     ;;
   ycm_rhel)
     install_ycm_rhel

@@ -6,6 +6,19 @@ autocmd BufRead,BufNewFile *.exs set filetype=elixir
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/vundle'
+Plugin 'Lokaltog/vim-powerline'
+" Plugin 'powerline/powerline'
+" let g:Powerline_symbols = 'fancy'
+
+" ================ Python =================
+Plugin 'klen/python-mode'
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
+
+Plugin 'psf/black'
+let g:black_linelength = 79
+let g:black_skip_string_normalization = 0
+autocmd BufWritePre *.py execute ':Black'
 
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'kien/ctrlp.vim'
@@ -18,14 +31,6 @@ Plugin 'mxw/vim-jsx'
 " Plugin 'Shutnik/jshint2.vim'
 
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'klen/python-mode'
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope = 0
-
-Plugin 'psf/black'
-let g:black_linelength = 79
-let g:black_skip_string_normalization = 0
-
 "Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
@@ -35,7 +40,8 @@ Plugin 'gregsexton/gitv'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/nerdcommenter'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'Lokaltog/vim-powerline'
+nmap <C-/><C-/> :TComment<CR>
+vmap <C-/><C-/> :TComment<CR>
 Plugin 'corntrace/bufexplorer'
 Plugin 'moll/vim-bbye'
 Plugin 'tpope/vim-fireplace'
@@ -53,7 +59,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 "Plugin 'AutoTag'
 
 "Plugin 'szarski/buftabs'
-
 
 " let g:NERDTreeWinSize = 40
 
@@ -118,13 +123,14 @@ let ruby_space_errors = 1
 
 nnoremap <leader>h :set hlsearch!<CR>
 
-set term=xterm
-set t_Co=256
+silent! colorscheme solarized
+set term=xterm-256color
+set t_Co=16
+" set t_Co=256
 let g:solarized_termcolors=16
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 set background=dark
-silent! colorscheme solarized
 
 " highlight clear SignColumn
 " highlight VertSplit    ctermbg=236
@@ -202,7 +208,8 @@ nmap <leader>r :Eval<CR>
 vmap <leader>r :Eval<CR>
 nmap <leader>t :Require<CR>
 nmap <leader>T :vertical term<CR>
-let &shell="/bin/bash --login"
+let &shell="/bin/bash --rcfile ~/.bash_profile"
+" let &shell="/bin/bash --login"
 nmap <leader>k i<CR><Esc>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>l :%!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parseString(''.join(sys.stdin.readlines())).toprettyxml(indent='  '))"<CR>
@@ -220,6 +227,7 @@ nmap <leader>D <c-o>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_detailed_diagnostics = '<c-s>d'
 Plugin 'rking/ag.vim'
+let $PYTHONPATH .= getcwd()
 
 call vundle#end()
 
