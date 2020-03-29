@@ -4,7 +4,11 @@
 ### Installation script
 
 ```
-./install.sh
+./install.sh swapfile
+./install.sh rhel
+./install.sh vim
+./install.sh ycm_rhel
+./install.sh links
 ```
 
 ### mintty

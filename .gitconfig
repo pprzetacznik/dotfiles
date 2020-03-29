@@ -1,0 +1,9 @@
+[user]
+        name = Piotr Przetacznik
+        email = piotr.przetacznik@gmail.com
+[core]
+        editor = vim
+[diff]
+        tool = vimdiff
+[difftool]
+        prompt = true
