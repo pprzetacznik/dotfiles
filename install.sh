@@ -3,7 +3,7 @@
 set -xe
 
 
-function_install_python_rhel () {
+function install_python_rhel () {
   sudo yum install python-devel
   sudo pip install --upgrade pip
   pip install virtualenv virtualenvwrapper
