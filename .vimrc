@@ -20,43 +20,51 @@ let g:black_linelength = 79
 let g:black_skip_string_normalization = 0
 autocmd BufWritePre *.py execute ':Black'
 
-Plugin 'elixir-lang/vim-elixir'
+" ================ Others =================
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'kien/ctrlp.vim'
-Plugin 'nono/vim-handlebars'
-Plugin 'kchmck/vim-coffee-script'
+let g:ctrlp_custom_ignore = 'build/\|\.agility-shared\|.git\|bin'
+
+" ================ JS =================
 Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+Plugin 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = ['eslint']
 " Plugin 'wookiehangover/jshint.vim'
 " Plugin 'Shutnik/jshint2.vim'
+Plugin 'posva/vim-vue'
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+" let g:vue_disable_pre_processors=1
+" Plugin 'paredit.vim'
+" let g:JSHintHighlightErrorLine = 0
+"Plugin 'AutoTag'
 
 Plugin 'vim-ruby/vim-ruby'
 "Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
+Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'gregsexton/gitv'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/nerdcommenter'
+
 Plugin 'tomtom/tcomment_vim'
 nmap <C-/><C-/> :TComment<CR>
 vmap <C-/><C-/> :TComment<CR>
+
 Plugin 'corntrace/bufexplorer'
 Plugin 'moll/vim-bbye'
 Plugin 'tpope/vim-fireplace'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-pathogen'
+Plugin 'nono/vim-handlebars'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'jimenezrick/vimerl'
-Plugin 'mattn/emmet-vim'
 Plugin 'derekwyatt/vim-scala'
-
-" Plugin 'paredit.vim'
-" let g:JSHintHighlightErrorLine = 0
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:syntastic_javascript_checkers = ['eslint']
-"Plugin 'AutoTag'
 
 "Plugin 'szarski/buftabs'
 
@@ -195,8 +203,6 @@ nmap <leader>v <S-v>
 
 nmap <TAB> <C-w>w
 nmap <S-TAB> <C-w><S-w>
-
-let g:ctrlp_custom_ignore = 'build/\|\.agility-shared\|.git\|bin'
 
 set laststatus=2
 
