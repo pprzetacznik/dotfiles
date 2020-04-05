@@ -60,6 +60,18 @@ function install_swapfile () {
   sudo echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 }
 
+function install_openjdk () {
+  wget https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz
+  tar xvf openjdk-14_linux-x64_bin.tar.gz
+  sudo mv jdk-14 /opt/
+  sudo tee /etc/profile.d/jdk14.sh <<EOF
+export JAVA_HOME=/opt/jdk-14
+export PATH=\$PATH:\$JAVA_HOME/bin
+EOF
+  source /etc/profile.d/jdk14.sh
+  rm openjdk-14_linux-x64_bin.tar.gz
+}
+
 JOB=${1:-rhel}
 
 case $JOB in
@@ -90,5 +102,8 @@ case $JOB in
     ;;
   links)
     install_links
+    ;;
+  openjdk)
+    install_openjdk
     ;;
 esac
