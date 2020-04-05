@@ -214,8 +214,7 @@ nmap <leader>r :Eval<CR>
 vmap <leader>r :Eval<CR>
 nmap <leader>t :Require<CR>
 nmap <leader>T :vertical term<CR>
-let &shell="/bin/bash --rcfile ~/.bash_profile"
-" let &shell="/bin/bash --login"
+let &shell="/bin/bash --login"
 nmap <leader>k i<CR><Esc>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>l :%!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parseString(''.join(sys.stdin.readlines())).toprettyxml(indent='  '))"<CR>
