@@ -215,6 +215,9 @@ vmap <leader>r :Eval<CR>
 nmap <leader>t :Require<CR>
 nmap <leader>T :vertical term<CR>
 let &shell="/bin/bash --login"
+function! Tapi_wincmd(bufnum, arglist)
+  execute 'wincmd' a:arglist[0]
+endfunction
 nmap <leader>k i<CR><Esc>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>l :%!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parseString(''.join(sys.stdin.readlines())).toprettyxml(indent='  '))"<CR>
