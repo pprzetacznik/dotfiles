@@ -10,6 +10,8 @@ function install_python_rhel () {
 }
 
 function install_vim () {
+  sudo yum install -y vim
+
   ln -sf $(pwd)/.vimrc ~/.vimrc
   ln -sf $(pwd)/.inputrc ~/.inputrc
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -54,10 +56,10 @@ function install_git_rhel () {
 }
 
 function install_swapfile () {
-  sudo dd if=/dev/zero of=/swapfile bs=1024 count=65536
+  sudo dd if=/dev/zero of=/swapfile bs=1024 count=2097152
   sudo mkswap /swapfile
   sudo swapon /swapfile
-  sudo echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+  echo "/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab
 }
 
 function install_openjdk () {
