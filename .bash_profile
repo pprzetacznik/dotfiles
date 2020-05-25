@@ -56,6 +56,7 @@ alias pgsqloff="sudo systemctl start postgresql-11.service"
 
 # tmux attach
 wincmd_next () {
-    echo -ne '\e]51;["call","Tapi_wincmd",["w"]]\a'
+    echo -ne '\e]51;["call","Tapi_wincmd",["'"$1"'"]]\a'
 }
-bind -m vi -x '"\C-i": wincmd_next'
+bind -m vi -x '"\C-i": wincmd_next w'
+bind -m vi -x '"\e[Z": wincmd_next W'
