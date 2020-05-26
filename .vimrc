@@ -22,8 +22,6 @@ autocmd BufWritePre *.py execute ':Black'
 
 " ================ Others =================
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'build/\|\.agility-shared\|.git\|bin'
 
 " ================ JS =================
 Plugin 'pangloss/vim-javascript'
@@ -131,15 +129,6 @@ let ruby_space_errors = 1
 
 nnoremap <leader>h :set hlsearch!<CR>
 
-silent! colorscheme solarized
-set term=xterm-256color
-set t_Co=16
-" set t_Co=256
-let g:solarized_termcolors=16
-let &t_AB="\e[48;5;%dm"
-let &t_AF="\e[38;5;%dm"
-set background=dark
-
 " highlight clear SignColumn
 " highlight VertSplit    ctermbg=236
 " highlight ColorColumn  ctermbg=237
@@ -155,37 +144,28 @@ set background=dark
 " highlight PmenuSel     ctermbg=0   ctermfg=3
 " highlight SpellBad     ctermbg=0   ctermfg=1
 
-let mapleader = "\<Space>"
-
-nmap <leader>w <c-w>w
-nmap <leader>x :Gblame<CR>
-nmap <leader>a :Gitv<CR>
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gp :Gpush<CR>
-nmap <leader>g :Ag<SPACE>
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 au! BufNewFile,BufRead *.god set ft=ruby
 au! BufNewFile,BufRead *.ex set ft=elixir
 au BufRead,BufNewFile * set colorcolumn=80
 
+let mapleader = "\<Space>"
+nmap <leader>w <c-w>w
 imap <c-l> <space>=><space>
 imap <s-tab> <c-x><c-o>
-
 nmap <leader>f :CtrlP<CR>
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
 nmap <leader>d :Bdelete<CR>
-
 nmap <leader>, :tabprevious<CR>
 nmap <leader>. :tabNext<CR>
-
-" nmap <leader>g <C-]>
-" nmap <leader>h <C-t>
-
 nmap <leader>n :NERDTreeToggle<CR>
-
 nmap <leader>e :BufExplorer<CR>
+
+nmap <leader>s :vsplit<CR>
+nmap <leader>z :split<CR>
+
+nmap <TAB> <C-w>w
+nmap <S-TAB> <C-w><S-w>
 
 set showcmd
 
@@ -195,47 +175,72 @@ set ttymouse=xterm2
 set mousemodel=extend
 
 nmap <leader>3 gcc
-
-nmap <leader>s :vsplit<CR>
-nmap <leader>z :split<CR>
-
 nmap <leader>v <S-v>
-
-nmap <TAB> <C-w>w
-nmap <S-TAB> <C-w><S-w>
 
 set laststatus=2
 
 " let NERDTreeIgnore = ['\.o$']
 nmap \ :noh<CR>
 nmap <leader>o <c-o>
+" nmap <leader>g <C-]>
+" nmap <leader>h <C-t>
 
 nmap <leader>r :Eval<CR>
 vmap <leader>r :Eval<CR>
+
+nmap <leader>k i<CR><Esc>
+nmap <leader>j :%!python -m json.tool<CR>
+nmap <leader>l :%!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parseString(''.join(sys.stdin.readlines())).toprettyxml(indent='  '))"<CR>
+
+set completeopt-=preview
+
+vnoremap <leader>c "+y
+
+" Plugin 'FSwitch'
+" nmap <leader>y :FSHere<CR>
+
+" ================ Git =================
+nmap <leader>x :Gblame<CR>
+nmap <leader>a :Gitv<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gp :Gpush<CR>
+
+" ================ Terminal =================
+silent! colorscheme solarized
+set term=xterm-256color
+set t_Co=16
+" set t_Co=256
+let g:solarized_termcolors=16
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
+set background=dark
+
 nmap <leader>t :Require<CR>
 nmap <leader>T :vertical term<CR>
 let &shell="/bin/bash --login"
 function! Tapi_wincmd(bufnum, arglist)
   execute 'wincmd' a:arglist[0]
 endfunction
-nmap <leader>k i<CR><Esc>
-nmap <leader>j :%!python -m json.tool<CR>
-nmap <leader>l :%!python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parseString(''.join(sys.stdin.readlines())).toprettyxml(indent='  '))"<CR>
-nmap <leader>m :copen<CR>
 
-set completeopt-=preview
-
-vnoremap <leader>c "+y
-
+" ================ Ycm =================
 Plugin 'ycm-core/YouCompleteMe'
-" Plugin 'FSwitch'
-" nmap <leader>y :FSHere<CR>
 nmap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <leader>D <c-o>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_detailed_diagnostics = '<c-s>d'
-Plugin 'rking/ag.vim'
 let $PYTHONPATH .= getcwd()
+
+" ================ Search and Tags =================
+nmap <leader>m :copen<CR>
+Plugin 'mileszs/ack.vim'
+nmap <leader>g :Ack<SPACE>
+let g:ackprg = 'ag --nogroup --nocolor --column'
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = 'build/\|\.agility-shared\|.git\|bin'
+let g:ctrlp_extensions = ['tag']
+
+Plugin 'ludovicchabant/vim-gutentags'
+set tags=./.git/tags-dep,tags-dep,./.git/tags,tags
 
 call vundle#end()
 

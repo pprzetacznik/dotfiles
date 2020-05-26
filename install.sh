@@ -10,7 +10,7 @@ function install_python_rhel () {
 }
 
 function install_vim () {
-  sudo yum install -y vim
+  sudo yum install -y vim the_silver_searcher
 
   ln -sf $(pwd)/.vimrc ~/.vimrc
   ln -sf $(pwd)/.inputrc ~/.inputrc
@@ -47,7 +47,7 @@ function install_links () {
 
 function install_tmux_rhel () {
   ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
-  sudo yum intall -y tmux
+  sudo yum install -y tmux
 }
 
 function install_git_rhel () {
@@ -104,6 +104,9 @@ case $JOB in
     ;;
   links)
     install_links
+    ;;
+  tmux)
+    install_tmux_rhel
     ;;
   openjdk)
     install_openjdk
