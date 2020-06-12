@@ -9,6 +9,10 @@ function install_python_rhel () {
   pip install virtualenv virtualenvwrapper
 }
 
+function install_python_ubuntu () {
+  sudo apt install python3-venv ctags
+}
+
 function install_vim () {
   sudo yum install -y vim the_silver_searcher
 
