@@ -10,7 +10,7 @@ function install_python_rhel () {
 }
 
 function install_python_ubuntu () {
-  sudo apt install python3-venv ctags
+  sudo apt install python3-pip python3-venv ctags
 }
 
 function install_vim () {
