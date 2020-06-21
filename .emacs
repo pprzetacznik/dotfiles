@@ -19,6 +19,15 @@
   "p" 'helm-find-files
   "t" 'term-char-mode
   "y" 'term-line-mode
+  "re" (lambda ()
+	 (interactive)
+	 (call-interactively 'slime-eval-last-expression-in-repl)
+	 (call-interactively 'previous-multiframe-window)
+	 )
+  "rd" 'slime-compile-defun
+  "rf" 'slime-compile-and-load-file
+  "rr" 'slime-compile-region
+  "rm" 'slime-macroexpand-all
   )
 (evil-global-set-key 'motion
   (kbd "TAB") 'other-window)
@@ -55,14 +64,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(frame-background-mode (quote dark))
  '(custom-enabled-themes (quote (solarized)))
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (color-theme-solarized xterm-color evil-leader helm evil))))
+    (slime color-theme-solarized xterm-color evil-leader helm evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -81,9 +90,9 @@
 ;; ;; (setq solarized-termcolors 256)
 
 (setq visible-bell 1)
-(tool-bar-mode -1) 
+(tool-bar-mode -1)
 (menu-bar-mode -1)
-(toggle-scroll-bar -1) 
+(toggle-scroll-bar -1)
 (xterm-mouse-mode 1)
 
 (setq inhibit-splash-screen t)
@@ -173,3 +182,4 @@ the cursor by ARG lines."
     (set-mark-command nil))
   (forward-line arg))
 
+(setq inferior-lisp-program "sbcl")
