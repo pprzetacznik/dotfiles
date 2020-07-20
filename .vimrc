@@ -242,6 +242,9 @@ let g:ctrlp_extensions = ['tag']
 Plugin 'ludovicchabant/vim-gutentags'
 set tags=./.git/tags-dep,tags-dep,./.git/tags,tags
 
+" ================ Docker =================
+Plugin 'ekalinin/Dockerfile.vim'
+
 call vundle#end()
 
 filetype off
