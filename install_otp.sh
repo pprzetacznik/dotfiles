@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -xe
+
+install_otp () {
+  ERL_VERSION=OTP-23.1.2
+
+  cd ~/
+  wget https://github.com/erlang/otp/archive/$ERL_VERSION.zip
+  unzip $ERL_VERSION.zip -d $ERL_VERSION
+  rm $ERL_VERSION.zip
+
+  export ERL_TOP=~/$ERL_VERSION
+
+  sudo apt install -y autoconf libncurses5-dev libncursesw5-dev
+  sudo apt install -y libwxbase3.0-dev libssl-dev
+
+  pushd $ERL_VERSION
+    ./autoconf
+    ./configure --prefix=$ERL_TOP/target
+    make
+    make install
+  popd
+}
+
+install_elixir () {
+  IEX_VERSION=1.11.2
+  IEX_PATH=~/elixir_$IEX_VERSION
+  export IEX_ZIP=Precompiled.zip
+  wget https://github.com/elixir-lang/elixir/releases/download/v$IEX_VERSION/$IEX_ZIP
+  unzip $IEX_ZIP -d $IEX_PATH
+  rm $IEX_ZIP
+}
+
+install_ielixir_deps () {
+  sudo apt install -y libzmq3-dev libsqlite3-dev
+}
+
+main () {
+  install_otp
+  install_elixir
+  install_ielixir_deps
+}
+
+main
