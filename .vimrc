@@ -245,6 +245,12 @@ set tags=./.git/tags-dep,tags-dep,./.git/tags,tags
 " ================ Docker =================
 Plugin 'ekalinin/Dockerfile.vim'
 
+" ============== Terraform ================
+Plugin 'hashivim/vim-terraform'
+
+" ================= Lint ==================
+Plugin 'dense-analysis/ale'
+
 call vundle#end()
 
 filetype off
