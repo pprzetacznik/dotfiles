@@ -35,6 +35,7 @@ function install_vim () {
 
 function install_vim_mac () {
   brew install vim
+  brew install the_silver_searcher
 
   ln -sf $(pwd)/.vimrc ~/.vimrc
   ln -sf $(pwd)/.inputrc ~/.inputrc
