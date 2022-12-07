@@ -2,7 +2,6 @@
 
 set -xe
 
-
 function install_python_rhel () {
   sudo yum install python-devel
   sudo pip install --upgrade pip
@@ -34,6 +33,20 @@ function install_vim () {
   install_ycm_rhel
 }
 
+function install_vim_mac () {
+  brew install vim
+
+  ln -sf $(pwd)/.vimrc ~/.vimrc
+  ln -sf $(pwd)/.inputrc ~/.inputrc
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+  git clone https://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
+  mkdir ~/.vim/colors
+  cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/solarized.vim
+
+  vim +slient +VimEnter +PluginInstall +qall
+}
+
 function install_ycm_rhel () {
   sudo dnf install -y cmake gcc-c++ make python3-devel
   pushd ~/.vim/bundle/YouCompleteMe
@@ -52,6 +65,11 @@ function install_links () {
 function install_tmux_rhel () {
   ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
   sudo yum install -y tmux
+}
+
+function install_tmux_mac () {
+  ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
+  brew install tmux
 }
 
 function install_git_rhel () {
@@ -93,6 +111,10 @@ case $JOB in
     install_links
     install_tmux_rhel
     install_ycm_rhel
+    ;;
+  install_mac)
+    install_tmux_mac
+    install_vim_mac
     ;;
   swapfile)
     install_swapfile
