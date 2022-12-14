@@ -200,10 +200,10 @@ vnoremap <leader>c "+y
 " nmap <leader>y :FSHere<CR>
 
 " ================ Git =================
-nmap <leader>x :Gblame<CR>
+nmap <leader>x :Git blame<CR>
 nmap <leader>a :Gitv<CR>
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gp :Gpush<CR>
+nmap <leader>gs :Git<CR>
+nmap <leader>gp :Git push<CR>
 
 " ================ Terminal =================
 silent! colorscheme solarized
