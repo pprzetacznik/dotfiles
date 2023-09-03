@@ -17,3 +17,16 @@
 cp mintty/themes/solarized AppData/Local/wsltty/usr/share/mintty/themes/solarized
 ```
 
+### Tips
+
+```
+sudo usermod -aG sudo username # ubuntu
+sudo usermod -aG wheel username # fedora
+# sudo visudo
+%wheel  ALL=(ALL)       NOPASSWD: ALL
+```
+
+```
+:w !sudo tee %
+```
+
