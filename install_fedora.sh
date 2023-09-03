@@ -7,8 +7,25 @@ function install_python_rhel () {
   pip install virtualenv virtualenvwrapper
 }
 
-function install_packages () {
-  dnf install git vim
+function install_git () {
+  ln -sf $(pwd)/.gitconfig ~/.gitconfig
+  dnf install git
+}
+
+function install_vim () {
+  dnf install gvim
+}
+
+function install_links () {
+  ln -sf $(pwd)/.screenrc ~/.screenrc
+  ln -sf $(pwd)/.dircolors ~/.dircolors
+  ln -sf $(pwd)/.emacs ~/.emacs
+  ln -sf $(pwd)/.eslintrc ~/.eslintrc
+}
+
+function install_tmux_rhel () {
+  ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
+  sudo dnf install -y tmux
 }
 
 function install_swapfile () {
